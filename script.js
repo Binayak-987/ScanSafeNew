@@ -15,8 +15,8 @@ function startScanner() {
             type: "LiveStream",
             target: "#scanner-container",
             constraints: {
-                width: 300, // Adjust camera width
-                height: 200, // Adjust camera height
+                width: 700, // Adjust camera width
+                height: 500, // Adjust camera height
                 facingMode: "environment" // Use back camera
             }
         },
