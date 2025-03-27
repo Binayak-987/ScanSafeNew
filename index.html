@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScanSafe - Food Barcode Scanner</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Welcome Page -->
+    <div id="welcome-page">
+        <div id="welcome-content">
+            <h1>Welcome to ScanSafe</h1>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div id="logo-container">
+            <h1 id="project-logo">ScanSafe</h1>
+            <p id="motto">Scan. Reveal. Decide.</p>
+        </div>
+        <img src="C:\Users\binay\OneDrive\Documents\WhatsApp Image 2025-03-26 at 18.04.25_8b584056.jpg" alt="College Logo" id="college-logo">
+    </header>
+
+    <!-- Allergy Selection -->
+    <div id="allergy-selection">
+        <h3>Select Allergies:</h3>
+        <label><input type="checkbox" value="nuts"> Nuts</label>
+        <label><input type="checkbox" value="gluten"> Gluten</label>
+        <label><input type="checkbox" value="soy"> Soy</label>
+        <label><input type="checkbox" value="milk"> Milk</label>
+        <input type="text" id="custom-allergen" placeholder="Other allergen">
+    </div>
+
+    <!-- Scanner and Product Info -->
+    <div class="container">
+        <button onclick="startScanner()">Start Scanner</button>
+        <div id="scanner-container"></div>
+        <input type="text" id="barcode-input" placeholder="Enter barcode manually">
+        <button onclick="fetchProductInfo()">Get Product Info</button>
+
+        <div id="product-info"></div>
+    </div>
+
+    <!-- Team Section -->
+    <section id="team-section">
+        <div class="team-member">
+            <img src="C:\Users\binay\Downloads\kohli.wall.jpeg" alt="BINAYAK MOHANTY">
+            <p>BINAYAK MOHANTY</p>
+        </div>
+        <div class="team-member">
+            <img src="C:\Users\binay\Downloads\skysports-virat-kohli-india_6594621.jpg" alt="ARIYAN MOHANTY">
+            <p>ARIYAN MOHANTY</p>
+        </div>
+        <div class="team-member">
+            <img src="C:\Users\binay\Downloads\skysports-virat-kohli-india_6594621.jpg" alt="BASUDEB PUHAN">
+            <p>BASUDEB PUHAN</p>
+        </div>
+        <div class="team-member">
+            <img src="C:\Users\binay\Downloads\kohli.wall.jpeg" alt="CHATURBHUJA NAYAK">
+            <p>CHATURBHUJA NAYAK</p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
