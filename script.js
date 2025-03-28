@@ -35,7 +35,7 @@ function startScanner() {
         }
     });
 
-    window.addEventListener("resize", () => {
+   window.addEventListener("resize", () => {
         const newSize = getCameraSize();
         Quagga.stop();
         Quagga.init({
@@ -62,6 +62,40 @@ function startScanner() {
         scannerContainer.style.display = "none"; // Hide scanner after scanning
         fetchProductInfo();
     });
+}
+
+// Function to Read Barcode from Uploaded Image
+function readBarcodeFromFile() {
+    const fileInput = document.getElementById("barcode-file");
+    if (fileInput.files.length === 0) {
+        alert("Please select an image file.");
+        return;
+    }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const img = new Image();
+        img.src = e.target.result;
+        img.onload = function () {
+            Quagga.decodeSingle({
+                src: img.src,
+                numOfWorkers: 0,
+                decoder: { readers: ["ean_reader", "upc_reader", "code_128_reader", "code_39_reader"] },
+                locate: true
+            }, function (result) {
+                if (result && result.codeResult) {
+                    document.getElementById("barcode-input").value = result.codeResult.code;
+                    fetchProductInfo();
+                } else {
+                    alert("Barcode not detected. Try another image.");
+                }
+            });
+        };
+    };
+
+    reader.readAsDataURL(file);
 }
 
 function fetchProductInfo() {
