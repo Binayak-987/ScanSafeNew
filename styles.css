@@ -51,6 +51,14 @@ header {
     margin: 0;
 }
 
+#credits {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+}
+
 #allergy-selection {
     margin: 20px auto;
     padding: 15px;
