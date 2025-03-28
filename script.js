@@ -10,14 +10,22 @@ function startScanner() {
     const scannerContainer = document.getElementById("scanner-container");
     scannerContainer.style.display = "block"; // Show scanner
 
+    function getCameraSize() {
+        return window.matchMedia("(orientation: portrait)").matches
+            ? { width: 200, height: 300 }  // Portrait mode
+            : { width: 300, height: 200 }; // Landscape mode
+    }
+
+    const { width, height } = getCameraSize();
+
     Quagga.init({
         inputStream: {
             type: "LiveStream",
             target: "#scanner-container",
             constraints: {
-                width: 300, // Adjust camera width
-                height: 200, // Adjust camera height
-                facingMode: "environment" // Use back camera
+                width: width,
+                height: height,
+                facingMode: "environment"
             }
         },
         decoder: { readers: ["ean_reader", "upc_reader", "code_128_reader", "code_39_reader"] }
@@ -25,6 +33,27 @@ function startScanner() {
         if (!err) {
             Quagga.start();
         }
+    });
+
+    window.addEventListener("resize", () => {
+        const newSize = getCameraSize();
+        Quagga.stop();
+        Quagga.init({
+            inputStream: {
+                type: "LiveStream",
+                target: "#scanner-container",
+                constraints: {
+                    width: newSize.width,
+                    height: newSize.height,
+                    facingMode: "environment"
+                }
+            },
+            decoder: { readers: ["ean_reader", "upc_reader", "code_128_reader", "code_39_reader"] }
+        }, function (err) {
+            if (!err) {
+                Quagga.start();
+            }
+        });
     });
 
     Quagga.onDetected(data => {
