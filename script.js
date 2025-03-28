@@ -71,6 +71,10 @@ function fetchProductInfo() {
                     <p><strong>Unhealthy Fats:</strong> ${fats}g</p>
                     <p><strong>Additives:</strong> ${additives}</p>
                 `;
+                // Move credits section below product info but above team section
+                const credits = document.getElementById("credits");
+                const teamSection = document.getElementById("team-section");
+                teamSection.parentNode.insertBefore(credits, teamSection);
             } else {
                 document.getElementById("product-info").innerHTML = "Product not found.";
             }
