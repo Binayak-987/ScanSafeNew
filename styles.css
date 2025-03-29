@@ -85,8 +85,8 @@ button {
 }
 
 #scanner-container {
-    width: 300px;
-    height: 200px;
+    width: 700px;
+    height: 500px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     margin: 10px 0;
