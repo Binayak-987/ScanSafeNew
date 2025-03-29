@@ -12,8 +12,8 @@ function startScanner() {
 
     function getCameraSize() {
         return window.matchMedia("(orientation: portrait)").matches
-            ? { width: 200, height: 300 }  // Portrait mode
-            : { width: 300, height: 200 }; // Landscape mode
+            ? { width: 500, height: 700 }  // Portrait mode
+            : { width: 700, height: 500 }; // Landscape mode
     }
 
     const { width, height } = getCameraSize();
